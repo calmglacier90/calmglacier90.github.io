@@ -1,0 +1,1208 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>51爆料每日大赛_官方视频门户,爆料社区新势力</title>
+<meta name="description" content="51爆料每日大赛官方网站，专注每日爆料影像与原创视频内容，汇聚行业创作者，打造值得信赖的视频内容社区与爆料赛事平台。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121018'/%3E%3Cpath d='M20 44V20l18 12-18 12z' fill='%23ff3b5c'/%3E%3Ccircle cx='46' cy='24' r='5' fill='%23ffd166'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bx-bg:#0f0d16;
+  --bx-panel:#171423;
+  --bx-panel2:#1e1a2c;
+  --bx-line:#2c2740;
+  --bx-text:#eae7f5;
+  --bx-mute:#9b94b5;
+  --bx-hi:#ff3b5c;
+  --bx-hi2:#ffd166;
+  --bx-cyan:#5ce1e6;
+  --bx-radius:14px;
+  --bx-shadow:0 10px 30px rgba(0,0,0,.35);
+  --bx-head:0px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bx-bg);color:var(--bx-text);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  line-height:1.75;font-size:16px;
+  padding-top:0;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit}
+.bx-wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* 吸顶公告 + 页头 */
+.bx-stickytop{position:sticky;top:0;z-index:60}
+.bx-announce{
+  background:linear-gradient(90deg,#ff3b5c,#b8204b 55%,#5c1d3a);
+  color:#fff;font-size:13.5px;
+}
+.bx-announce-in{display:flex;gap:12px;align-items:center;padding:8px 20px;max-width:1180px;margin:0 auto;flex-wrap:wrap}
+.bx-announce b{background:rgba(255,255,255,.18);border-radius:999px;padding:1px 10px;font-size:12px;letter-spacing:.5px;white-space:nowrap}
+.bx-announce span{opacity:.95}
+.bx-header{
+  background:rgba(15,13,22,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--bx-line);
+}
+.bx-header-in{display:flex;align-items:center;gap:22px;padding:12px 20px;max-width:1180px;margin:0 auto}
+.bx-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.5px;white-space:nowrap}
+.bx-logo-mark{
+  width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#ff3b5c,#7a1b3a);
+  display:grid;place-items:center;color:#fff;font-size:15px;flex:0 0 auto;
+}
+.bx-logo small{display:block;font-size:10.5px;font-weight:500;color:var(--bx-mute);letter-spacing:2px}
+.bx-nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:8px}
+.bx-nav a{
+  padding:7px 12px;border-radius:9px;font-size:14.5px;color:var(--bx-mute);
+  transition:.2s;
+}
+.bx-nav a:hover{background:var(--bx-panel2);color:var(--bx-text)}
+.bx-head-actions{margin-left:auto;display:flex;align-items:center;gap:10px}
+.bx-search{
+  display:flex;align-items:center;gap:6px;background:var(--bx-panel);
+  border:1px solid var(--bx-line);border-radius:999px;padding:5px 6px 5px 14px;
+}
+.bx-search input{
+  background:transparent;border:0;outline:0;color:var(--bx-text);width:150px;font-size:14px;
+}
+.bx-search input::placeholder{color:#6d6788}
+.bx-btn{
+  border:0;cursor:pointer;border-radius:9px;padding:8px 15px;font-size:14px;font-weight:600;
+  background:var(--bx-panel2);color:var(--bx-text);transition:.18s;
+}
+.bx-btn:hover{transform:translateY(-1px)}
+.bx-btn-hi{background:linear-gradient(135deg,#ff3b5c,#d1204a);color:#fff;box-shadow:0 6px 18px rgba(255,59,92,.28)}
+.bx-btn-ghost{background:transparent;border:1px solid var(--bx-line);color:var(--bx-text)}
+.bx-btn-ghost:hover{border-color:var(--bx-hi);color:#fff}
+.bx-burger{display:none}
+.bx-mobilenav{display:none;border-top:1px solid var(--bx-line);background:var(--bx-panel)}
+.bx-mobilenav.open{display:block}
+.bx-mobilenav a{display:block;padding:11px 20px;border-bottom:1px solid rgba(44,39,64,.6);font-size:15px;color:var(--bx-mute)}
+.bx-mobilenav a:hover{color:var(--bx-text);background:var(--bx-panel2)}
+.bx-searchmsg{font-size:12.5px;color:var(--bx-hi2);padding:6px 20px 10px;display:none}
+.bx-searchmsg.show{display:block}
+
+/* 首屏 */
+.bx-hero{padding:44px 0 20px;position:relative;overflow:hidden}
+.bx-hero::before{
+  content:"";position:absolute;inset:-120px -10% auto -10%;height:420px;
+  background:radial-gradient(closest-side,rgba(255,59,92,.22),transparent 70%),
+             radial-gradient(closest-side at 80% 30%,rgba(92,225,230,.12),transparent 70%);
+  pointer-events:none;
+}
+.bx-hero-grid{display:grid;grid-template-columns:5fr 5fr;gap:38px;align-items:center;position:relative}
+.bx-kicker{
+  display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:2px;
+  color:var(--bx-hi2);border:1px solid rgba(255,209,102,.35);border-radius:999px;padding:4px 12px;
+  background:rgba(255,209,102,.07);
+}
+.bx-h1{
+  font-size:clamp(30px,4.4vw,50px);line-height:1.18;margin:18px 0 14px;letter-spacing:.5px;
+  font-weight:900;
+}
+.bx-h1 em{font-style:normal;color:var(--bx-hi)}
+.bx-hero-lead{font-size:16.5px;color:#c8c2dd;margin:0 0 16px}
+.bx-hero-intro{color:var(--bx-mute);font-size:14.5px;margin:0 0 22px}
+.bx-hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.bx-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.bx-stat{
+  background:linear-gradient(160deg,var(--bx-panel2),rgba(23,20,35,.4));
+  border:1px solid var(--bx-line);border-radius:12px;padding:12px 14px;
+}
+.bx-stat b{display:block;font-size:22px;color:var(--bx-hi2);letter-spacing:.5px}
+.bx-stat span{font-size:12.5px;color:var(--bx-mute)}
+.bx-hero-visual{
+  border-radius:20px;overflow:hidden;border:1px solid var(--bx-line);box-shadow:var(--bx-shadow);
+  position:relative;background:var(--bx-panel);
+}
+.bx-hero-visual img{width:100%;aspect-ratio:16/11;object-fit:cover}
+.bx-hero-badge{
+  position:absolute;left:14px;bottom:14px;background:rgba(10,8,16,.72);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:8px 12px;font-size:12.5px;color:#fff;
+  display:flex;gap:8px;align-items:center;
+}
+.bx-dot{width:8px;height:8px;border-radius:50%;background:var(--bx-hi);box-shadow:0 0 0 3px rgba(255,59,92,.25)}
+
+/* 通用 section */
+.bx-section{padding:48px 0}
+.bx-section.alt{background:linear-gradient(180deg,rgba(30,26,44,.55),transparent)}
+.bx-sec-head{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.bx-h2{font-size:clamp(22px,2.6vw,30px);margin:0;font-weight:800;letter-spacing:.5px}
+.bx-h2 span{color:var(--bx-hi)}
+.bx-sec-desc{color:var(--bx-mute);font-size:14px;margin:0;max-width:640px}
+.bx-sec-more{margin-left:auto;font-size:13.5px;color:var(--bx-cyan)}
+.bx-tag{
+  display:inline-block;font-size:12px;color:var(--bx-cyan);background:rgba(92,225,230,.1);
+  border:1px solid rgba(92,225,230,.25);border-radius:6px;padding:1px 8px;margin-right:6px;
+}
+.bx-tag.hot{color:var(--bx-hi);background:rgba(255,59,92,.1);border-color:rgba(255,59,92,.3)}
+.bx-tag.gold{color:var(--bx-hi2);background:rgba(255,209,102,.1);border-color:rgba(255,209,102,.3)}
+
+/* 焦点 + 视频列表 */
+.bx-focus-grid{display:grid;grid-template-columns:5fr 7fr;gap:24px}
+.bx-focus-card{
+  background:var(--bx-panel);border:1px solid var(--bx-line);border-radius:var(--bx-radius);
+  overflow:hidden;transition:.22s;display:flex;flex-direction:column;
+}
+.bx-focus-card:hover{transform:translateY(-4px);border-color:rgba(255,59,92,.5);box-shadow:var(--bx-shadow)}
+.bx-focus-card img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.bx-focus-body{padding:18px 20px}
+.bx-focus-body h3{margin:6px 0 8px;font-size:19px}
+.bx-focus-body p{margin:0 0 14px;color:var(--bx-mute);font-size:14px}
+.bx-meta{display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px;color:#7d769a;margin-bottom:12px}
+.bx-meta b{color:var(--bx-text);font-weight:600}
+.bx-vlist{display:flex;flex-direction:column;gap:10px;min-width:0}
+.bx-vitem{
+  display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start;
+  background:var(--bx-panel);border:1px solid var(--bx-line);border-radius:12px;padding:14px 16px;
+  transition:.2s;
+}
+.bx-vitem:hover{border-color:rgba(92,225,230,.45);background:var(--bx-panel2)}
+.bx-vno{font-size:20px;font-weight:900;color:#3b3454;line-height:1.2;min-width:30px}
+.bx-vitem h3{margin:0 0 4px;font-size:15.5px;line-height:1.5}
+.bx-vitem p{margin:0;color:var(--bx-mute);font-size:13px}
+.bx-vitem .bx-vtags{margin-top:6px}
+.bx-vact{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.bx-mini{
+  border:1px solid var(--bx-line);background:transparent;color:var(--bx-mute);
+  border-radius:8px;padding:4px 10px;font-size:12px;cursor:pointer;white-space:nowrap;transition:.18s;
+}
+.bx-mini:hover{color:var(--bx-text);border-color:var(--bx-hi)}
+.bx-mini.on{color:#fff;background:rgba(255,59,92,.18);border-color:var(--bx-hi)}
+
+/* 榜单 */
+.bx-rank-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.bx-rank-card{
+  background:var(--bx-panel);border:1px solid var(--bx-line);border-radius:var(--bx-radius);padding:18px;
+}
+.bx-rank-card h3{margin:0 0 4px;font-size:17px}
+.bx-rank-card .bx-sub{font-size:12.5px;color:var(--bx-mute);margin:0 0 14px}
+.bx-rank-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.bx-rank-list li{
+  display:flex;align-items:center;gap:10px;font-size:14px;padding-bottom:9px;
+  border-bottom:1px dashed rgba(44,39,64,.8);
+}
+.bx-rank-list li:last-child{border-bottom:0;padding-bottom:0}
+.bx-rank-list .num{
+  width:22px;height:22px;border-radius:6px;display:grid;place-items:center;font-size:12px;font-weight:800;
+  background:var(--bx-panel2);color:var(--bx-mute);flex:0 0 auto;
+}
+.bx-rank-list li:nth-child(1) .num{background:var(--bx-hi);color:#fff}
+.bx-rank-list li:nth-child(2) .num{background:var(--bx-hi2);color:#221b06}
+.bx-rank-list li:nth-child(3) .num{background:var(--bx-cyan);color:#062325}
+.bx-rank-list em{font-style:normal;margin-left:auto;color:var(--bx-mute);font-size:12px;white-space:nowrap}
+
+/* 作者矩阵 */
+.bx-authors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.bx-author{
+  background:var(--bx-panel);border:1px solid var(--bx-line);border-radius:var(--bx-radius);
+  padding:18px;display:flex;gap:14px;transition:.2s;
+}
+.bx-author:hover{border-color:rgba(255,209,102,.4);transform:translateY(-3px)}
+.bx-avatar{
+  width:52px;height:52px;border-radius:14px;flex:0 0 auto;display:grid;place-items:center;
+  font-weight:900;font-size:19px;color:#fff;
+}
+.bx-author h3{margin:0;font-size:16px}
+.bx-author .bx-role{font-size:12.5px;color:var(--bx-hi2);margin:2px 0 6px}
+.bx-author p{margin:0;font-size:13px;color:var(--bx-mute)}
+.bx-author .bx-numbers{display:flex;gap:12px;margin-top:8px;font-size:12px;color:#7d769a}
+.bx-author .bx-numbers b{color:var(--bx-text)}
+.bx-author-more{margin-top:8px}
+
+/* 专题 */
+.bx-topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.bx-topic{
+  background:linear-gradient(160deg,var(--bx-panel2),var(--bx-panel));
+  border:1px solid var(--bx-line);border-radius:var(--bx-radius);padding:20px;
+}
+.bx-topic-head{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.bx-topic-icon{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-size:18px;flex:0 0 auto}
+.bx-topic h3{margin:0;font-size:17px}
+.bx-topic .bx-status{font-size:12px;color:var(--bx-cyan);margin-left:auto;white-space:nowrap}
+.bx-topic p{color:var(--bx-mute);font-size:13.5px;margin:0 0 12px}
+.bx-topic ul{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:7px;font-size:13.5px}
+.bx-topic li{display:flex;gap:8px;color:#cbc5e0}
+.bx-topic li::before{content:"▸";color:var(--bx-hi)}
+
+/* 长文解析 */
+.bx-essay{max-width:900px}
+.bx-essay h3{font-size:19px;margin:26px 0 10px;color:var(--bx-hi2)}
+.bx-essay p{color:#c3bdd8;font-size:15px;margin:0 0 12px}
+.bx-essay .bx-quote{
+  border-left:3px solid var(--bx-hi);padding:10px 16px;background:var(--bx-panel);
+  border-radius:0 10px 10px 0;color:#d8d3ea;font-size:14.5px;margin:16px 0;
+}
+
+/* 评论 */
+.bx-comments{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.bx-comment{
+  background:var(--bx-panel);border:1px solid var(--bx-line);border-radius:12px;padding:16px;
+}
+.bx-comment-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.bx-cavatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;color:#fff;flex:0 0 auto}
+.bx-comment-head b{font-size:14px}
+.bx-comment-head span{font-size:11.5px;color:#7d769a;margin-left:auto;white-space:nowrap}
+.bx-comment p{margin:0;font-size:13.5px;color:#c3bdd8}
+.bx-score{
+  display:flex;gap:6px;align-items:center;color:var(--bx-hi2);font-size:12.5px;margin-top:8px;
+}
+.bx-stars{letter-spacing:1px;color:var(--bx-hi2)}
+
+/* 辅助区 */
+.bx-aux-grid{display:grid;grid-template-columns:7fr 5fr;gap:24px}
+.bx-news-list{display:flex;flex-direction:column;gap:12px}
+.bx-news{
+  display:grid;grid-template-columns:auto 1fr;gap:14px;padding:14px 16px;border-radius:12px;
+  background:var(--bx-panel);border:1px solid var(--bx-line);
+}
+.bx-news time{font-size:12px;color:var(--bx-cyan);white-space:nowrap}
+.bx-news h3{margin:0 0 4px;font-size:15px}
+.bx-news p{margin:0;font-size:13px;color:var(--bx-mute)}
+.bx-partners{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.bx-partner{
+  background:var(--bx-panel);border:1px solid var(--bx-line);border-radius:12px;padding:14px;
+  display:flex;align-items:center;gap:10px;transition:.2s;
+}
+.bx-partner:hover{border-color:var(--bx-cyan)}
+.bx-partner-mark{
+  width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-weight:900;font-size:13px;color:#0f0d16;flex:0 0 auto;
+}
+.bx-partner b{font-size:13.5px;display:block}
+.bx-partner small{font-size:11.5px;color:var(--bx-mute)}
+
+/* FAQ */
+.bx-faq{display:flex;flex-direction:column;gap:10px;max-width:900px}
+.bx-faq details{
+  background:var(--bx-panel);border:1px solid var(--bx-line);border-radius:12px;overflow:hidden;
+}
+.bx-faq summary{
+  cursor:pointer;padding:14px 18px;font-size:15px;font-weight:600;list-style:none;
+  display:flex;align-items:center;gap:10px;
+}
+.bx-faq summary::-webkit-details-marker{display:none}
+.bx-faq summary::before{content:"+";color:var(--bx-hi);font-weight:900;font-size:18px;line-height:1}
+.bx-faq details[open] summary::before{content:"−"}
+.bx-faq details p{margin:0;padding:0 18px 16px;color:var(--bx-mute);font-size:14px}
+
+/* 页脚 */
+.bx-footer{background:#0a0810;border-top:1px solid var(--bx-line);padding:44px 0 22px;margin-top:20px}
+.bx-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px}
+.bx-footer h4{font-size:14px;margin:0 0 12px;color:var(--bx-hi2);letter-spacing:1px}
+.bx-footer p,.bx-footer li{font-size:13px;color:#8a84a6}
+.bx-footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.bx-footer a:hover{color:var(--bx-text)}
+.bx-footer-bottom{
+  border-top:1px solid rgba(44,39,64,.7);margin-top:28px;padding-top:16px;
+  font-size:12.5px;color:#6d6788;display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between;
+}
+
+/* 弹层与提示 */
+.bx-modal{
+  position:fixed;inset:0;background:rgba(6,5,10,.72);display:none;align-items:center;justify-content:center;
+  z-index:100;padding:20px;
+}
+.bx-modal.open{display:flex}
+.bx-modal-box{
+  background:var(--bx-panel);border:1px solid var(--bx-line);border-radius:16px;max-width:480px;width:100%;
+  padding:24px;box-shadow:var(--bx-shadow);
+}
+.bx-modal-box h3{margin:0 0 10px;font-size:19px}
+.bx-modal-box p{color:var(--bx-mute);font-size:14px;margin:0 0 16px}
+.bx-modal-box label{display:block;font-size:13px;color:var(--bx-mute);margin:10px 0 4px}
+.bx-modal-box input,.bx-modal-box textarea,.bx-modal-box select{
+  width:100%;background:var(--bx-panel2);border:1px solid var(--bx-line);border-radius:9px;
+  color:var(--bx-text);padding:9px 12px;font-size:14px;outline:0;font-family:inherit;
+}
+.bx-modal-box textarea{min-height:86px;resize:vertical}
+.bx-modal-actions{display:flex;gap:10px;margin-top:18px;justify-content:flex-end}
+.bx-toast{
+  position:fixed;left:50%;bottom:36px;transform:translate(-50%,20px);opacity:0;pointer-events:none;
+  background:#241f36;border:1px solid var(--bx-line);color:var(--bx-text);padding:10px 20px;border-radius:999px;
+  font-size:14px;z-index:120;transition:.25s;box-shadow:var(--bx-shadow);
+}
+.bx-toast.show{opacity:1;transform:translate(-50%,0)}
+.bx-totop{
+  position:fixed;right:22px;bottom:82px;width:44px;height:44px;border-radius:12px;border:1px solid var(--bx-line);
+  background:var(--bx-panel);color:var(--bx-text);cursor:pointer;font-size:16px;display:none;z-index:90;
+}
+.bx-totop.show{display:block}
+
+@media (max-width:960px){
+  .bx-hero-grid,.bx-focus-grid,.bx-aux-grid{grid-template-columns:1fr}
+  .bx-authors,.bx-rank-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bx-nav{display:none}
+  .bx-burger{display:inline-block}
+  .bx-search input{width:110px}
+  .bx-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:680px){
+  .bx-authors,.bx-rank-grid,.bx-topics,.bx-comments,.bx-partners,.bx-footer-grid{grid-template-columns:1fr}
+  .bx-header-in{gap:10px}
+  .bx-search{display:none}
+  .bx-vitem{grid-template-columns:auto 1fr}
+  .bx-vact{grid-column:1/-1;flex-direction:row;justify-content:flex-end}
+  .bx-hero{padding-top:28px}
+  .bx-stats{grid-template-columns:1fr}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="bx-stickytop">
+  <div class="bx-announce">
+    <div class="bx-announce-in">
+      <b>官方公告</b>
+      <span>11 月 22 日第 318 期每日大赛开榜：新增「城市夜行」赛道，投稿截止 11 月 26 日 23:59，本期新增 2 位签约创作者与 3 个品牌合作专题。</span>
+    </div>
+  </div>
+  <header class="bx-header">
+    <div class="bx-header-in">
+      <a href="#bx-top" class="bx-logo" aria-label="51爆料每日大赛首页">
+        <span class="bx-logo-mark">51</span>
+        <span>51爆料每日大赛<small>DAILY LEAK ARENA</small></span>
+      </a>
+      <nav class="bx-nav" aria-label="主导航">
+        <a href="#bx-focus">焦点爆料</a>
+        <a href="#bx-rank">每日榜单</a>
+        <a href="#bx-topics">专题企划</a>
+        <a href="#bx-authors">创作者</a>
+        <a href="#bx-essay">品牌解析</a>
+        <a href="#bx-comments">社区口碑</a>
+        <a href="#bx-faq">帮助中心</a>
+      </nav>
+      <div class="bx-head-actions">
+        <form class="bx-search" id="bxSearchForm" role="search">
+          <input type="search" id="bxSearchInput" placeholder="搜索爆料 / 作者" aria-label="搜索爆料或作者">
+          <button class="bx-btn bx-btn-hi" type="submit">搜索</button>
+        </form>
+        <button class="bx-btn bx-btn-ghost" id="bxSubmitOpen" type="button">我要投稿</button>
+        <button class="bx-btn bx-burger" id="bxBurger" type="button" aria-label="展开导航" aria-expanded="false">☰</button>
+      </div>
+    </div>
+    <div class="bx-mobilenav" id="bxMobileNav">
+      <a href="#bx-focus">焦点爆料</a>
+      <a href="#bx-rank">每日榜单</a>
+      <a href="#bx-topics">专题企划</a>
+      <a href="#bx-authors">创作者</a>
+      <a href="#bx-essay">品牌解析</a>
+      <a href="#bx-comments">社区口碑</a>
+      <a href="#bx-faq">帮助中心</a>
+    </div>
+    <div class="bx-searchmsg" id="bxSearchMsg"></div>
+  </header>
+</div>
+
+<main id="bx-top">
+
+  <!-- S2 品牌首屏 -->
+  <section class="bx-hero">
+    <div class="bx-wrap bx-hero-grid">
+      <div>
+        <span class="bx-kicker">官方网站 · 每日大赛 · 原创正版</span>
+        <h1 class="bx-h1">51爆料每日大赛</h1>
+        <p class="bx-hero-lead">一个把“每天都有新爆料”做成赛事机制的原创视频内容平台。</p>
+        <p class="bx-hero-intro">
+          作为持续运营的爆料类视频品牌，51爆料每日大赛官方网站以每日命题、公开投稿、社区投票的方式，
+          串联创作者、企业品牌与普通观众。我们深耕垂直领域，坚持正版高清与用户至上，
+          让每一次爆料都有出处、有回应、有成长。
+        </p>
+        <div class="bx-hero-actions">
+          <button class="bx-btn bx-btn-hi" id="bxHeroSubmit" type="button">参加今日大赛</button>
+          <a class="bx-btn bx-btn-ghost" href="#bx-focus">查看本期焦点</a>
+          <a class="bx-btn bx-btn-ghost" href="#bx-essay">了解品牌故事</a>
+        </div>
+        <div class="bx-stats">
+          <div class="bx-stat"><b>318</b><span>已连续开赛期数</span></div>
+          <div class="bx-stat"><b>2.4 万</b><span>在册内容创作者</span></div>
+          <div class="bx-stat"><b>1.7 亿</b><span>累计视频播放量</span></div>
+        </div>
+      </div>
+      <div class="bx-hero-visual">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 550'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23241b38'/%3E%3Cstop offset='1' stop-color='%230f0d16'/%3E%3C/linearGradient%3E%3ClinearGradient id='g2' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23ff3b5c'/%3E%3Cstop offset='1' stop-color='%23ffd166'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='550' fill='url(%23g1)'/%3E%3Ccircle cx='640' cy='110' r='150' fill='%23ff3b5c' opacity='0.14'/%3E%3Ccircle cx='160' cy='430' r='190' fill='%235ce1e6' opacity='0.10'/%3E%3Cg opacity='0.9'%3E%3Crect x='90' y='120' width='420' height='250' rx='16' fill='%231a1628' stroke='%232c2740'/%3E%3Crect x='112' y='142' width='376' height='158' rx='10' fill='%23241f38'/%3E%3Cpath d='M270 190v62l54-31z' fill='url(%23g2)'/%3E%3Crect x='112' y='318' width='180' height='14' rx='7' fill='%233a3354'/%3E%3Crect x='112' y='342' width='260' height='10' rx='5' fill='%232c2740'/%3E%3C/g%3E%3Cg%3E%3Crect x='560' y='230' width='170' height='120' rx='14' fill='%23221d33' stroke='%233a3354'/%3E%3Ctext x='590' y='300' font-family='sans-serif' font-size='46' font-weight='900' fill='%23ffd166'%3E51%3C/text%3E%3C/g%3E%3Cg fill='%23ff3b5c'%3E%3Ccircle cx='620' cy='420' r='7'/%3E%3Ccircle cx='660' cy='440' r='5'/%3E%3Ccircle cx='700' cy='410' r='9'/%3E%3C/g%3E%3Cpath d='M90 470 L740 470' stroke='%232c2740' stroke-width='2'/%3E%3C/svg%3E" alt="51爆料每日大赛首屏主视觉：播放器界面与每日大赛标识" width="800" height="550">
+        <div class="bx-hero-badge"><span class="bx-dot"></span>今日赛道进行中 · 已有 1,286 条投稿</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3 焦点爆料 + 视频列表 -->
+  <section class="bx-section alt" id="bx-focus">
+    <div class="bx-wrap">
+      <div class="bx-sec-head">
+        <h2 class="bx-h2">今日焦点 · <span>爆料现场</span></h2>
+        <p class="bx-sec-desc">每日大赛从公开投稿中选出焦点内容，由编辑团队核对出处并补充背景，让爆料成为可追溯的精品内容。</p>
+        <a class="bx-sec-more" href="#bx-rank">进入完整榜单 →</a>
+      </div>
+
+      <div class="bx-focus-grid">
+        <article class="bx-focus-card">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Cdefs%3E%3ClinearGradient id='f1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23362045'/%3E%3Cstop offset='1' stop-color='%23171326'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='360' fill='url(%23f1)'/%3E%3Cg opacity='0.55'%3E%3Crect x='60' y='60' width='520' height='240' rx='14' fill='%23100d1b'/%3E%3C/g%3E%3Cg stroke='%235ce1e6' stroke-width='2' opacity='0.7'%3E%3Cpath d='M110 250 L200 160 L280 210 L370 110 L470 170 L540 120'/%3E%3C/g%3E%3Cg fill='%23ff3b5c'%3E%3Ccircle cx='200' cy='160' r='6'/%3E%3Ccircle cx='370' cy='110' r='6'/%3E%3Ccircle cx='540' cy='120' r='6'/%3E%3C/g%3E%3Ctext x='80' y='110' font-family='sans-serif' font-size='26' font-weight='800' fill='%23ffd166'%3E%E5%9F%8E%E5%B8%82%E5%A4%9C%E8%A1%8C%3C/text%3E%3Ctext x='80' y='140' font-family='sans-serif' font-size='14' fill='%239b94b5'%3E318%E6%9C%9F%E4%B8%BB%E9%A2%98%E8%B5%9B%E9%81%93%3C/text%3E%3C/svg%3E" alt="城市夜行赛道焦点爆料封面：夜间城市曲线与数据节点" width="640" height="360" loading="lazy">
+          <div class="bx-focus-body">
+            <div><span class="bx-tag hot">焦点爆料</span><span class="bx-tag">城市探索</span></div>
+            <h3>深夜 11 点的便利店灯光：一条街的 7 个夜行者</h3>
+            <p>创作者用连续 6 晚的跟拍，记录凌晨便利店周边的外卖骑手、便利店店员和代驾司机。视频末段附上完整时间戳与拍摄说明，是本季口碑最高的实地爆料之一。</p>
+            <div class="bx-meta"><span>作者 <b>夜航员阿野</b></span><span>播放 <b>86.4 万</b></span><span>点赞 <b>3.2 万</b></span><span>收藏 <b>1.1 万</b></span></div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button class="bx-mini" data-like type="button">♡ 点赞</button>
+              <button class="bx-mini" data-fav type="button">☆ 收藏</button>
+              <button class="bx-mini" data-copy type="button">复制链接</button>
+              <button class="bx-mini" data-share type="button">分享</button>
+            </div>
+          </div>
+        </article>
+
+        <div class="bx-vlist">
+          <div class="bx-vitem">
+            <div class="bx-vno">01</div>
+            <div>
+              <h3>一张外卖小票背后的 12 小时</h3>
+              <p>从接单到送达的完整链路记录，附带骑手口述与商家后台截图比对。</p>
+              <div class="bx-vtags"><span class="bx-tag">行业观察</span><span class="bx-tag gold">编辑推荐</span></div>
+              <div class="bx-meta"><span>作者 <b>骑手老周</b></span><span>播放 <b>52.1 万</b></span><span>点赞 <b>1.8 万</b></span></div>
+            </div>
+            <div class="bx-vact">
+              <button class="bx-mini" data-like type="button">♡ 1.8w</button>
+              <button class="bx-mini" data-fav type="button">☆ 收藏</button>
+            </div>
+          </div>
+          <div class="bx-vitem">
+            <div class="bx-vno">02</div>
+            <div>
+              <h3>菜市场闭市之后，剩下的人在做什么</h3>
+              <p>凌晨两点的批发档口、三轮车维修摊与清洁班组，三段平行记录。</p>
+              <div class="bx-vtags"><span class="bx-tag">日常记录</span><span class="bx-tag">在地文化</span></div>
+              <div class="bx-meta"><span>作者 <b>菜场观察员</b></span><span>播放 <b>44.6 万</b></span><span>点赞 <b>1.5 万</b></span></div>
+            </div>
+            <div class="bx-vact">
+              <button class="bx-mini" data-like type="button">♡ 1.5w</button>
+              <button class="bx-mini" data-fav type="button">☆ 收藏</button>
+            </div>
+          </div>
+          <div class="bx-vitem">
+            <div class="bx-vno">03</div>
+            <div>
+              <h3>我用三天时间还原了一台老式收音机</h3>
+              <p>拆解、清灰、换电容、重新校准，全过程含零件清单与成本明细。</p>
+              <div class="bx-vtags"><span class="bx-tag">手作DIY</span><span class="bx-tag">教程干货</span></div>
+              <div class="bx-meta"><span>作者 <b>手工老陈</b></span><span>播放 <b>37.9 万</b></span><span>点赞 <b>1.2 万</b></span></div>
+            </div>
+            <div class="bx-vact">
+              <button class="bx-mini" data-like type="button">♡ 1.2w</button>
+              <button class="bx-mini" data-fav type="button">☆ 收藏</button>
+            </div>
+          </div>
+          <div class="bx-vitem">
+            <div class="bx-vno">04</div>
+            <div>
+              <h3>藏在写字楼里的最后一间打印店</h3>
+              <p>店主讲了九年里最难忘的三位客人，以及他为什么不肯搬走。</p>
+              <div class="bx-vtags"><span class="bx-tag">人物访谈</span><span class="bx-tag">情感故事</span></div>
+              <div class="bx-meta"><span>作者 <b>小楼探长</b></span><span>播放 <b>29.3 万</b></span><span>点赞 <b>9,860</b></span></div>
+            </div>
+            <div class="bx-vact">
+              <button class="bx-mini" data-like type="button">♡ 9860</button>
+              <button class="bx-mini" data-fav type="button">☆ 收藏</button>
+            </div>
+          </div>
+          <div class="bx-vitem">
+            <div class="bx-vno">05</div>
+            <div>
+              <h3>爆料的边界在哪里：一次公开的资料核对</h3>
+              <p>编辑部与三位创作者连线，复盘一条热点内容的核查流程。</p>
+              <div class="bx-vtags"><span class="bx-tag">官方发布</span><span class="bx-tag">知识科普</span></div>
+              <div class="bx-meta"><span>作者 <b>51爆料编辑部</b></span><span>播放 <b>21.7 万</b></span><span>点赞 <b>7,420</b></span></div>
+            </div>
+            <div class="bx-vact">
+              <button class="bx-mini" data-like type="button">♡ 7420</button>
+              <button class="bx-mini" data-fav type="button">☆ 收藏</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 榜单 -->
+  <section class="bx-section" id="bx-rank">
+    <div class="bx-wrap">
+      <div class="bx-sec-head">
+        <h2 class="bx-h2">每日大赛 <span>三榜公示</span></h2>
+        <p class="bx-sec-desc">热度榜统计近 24 小时互动；新人榜面向首次参赛创作者；口碑榜由观众完成度与收藏率综合计算，每日 20:00 更新。</p>
+      </div>
+      <div class="bx-rank-grid">
+        <div class="bx-rank-card">
+          <h3>热度榜 · 今日</h3>
+          <p class="bx-sub">综合播放、完播与互动</p>
+          <ol class="bx-rank-list">
+            <li><span class="num">1</span>深夜 11 点的便利店灯光<em>86.4w</em></li>
+            <li><span class="num">2</span>一张外卖小票背后的 12 小时<em>52.1w</em></li>
+            <li><span class="num">3</span>菜市场闭市之后<em>44.6w</em></li>
+            <li><span class="num">4</span>我用三天还原老式收音机<em>37.9w</em></li>
+            <li><span class="num">5</span>写字楼里的最后一间打印店<em>29.3w</em></li>
+          </ol>
+        </div>
+        <div class="bx-rank-card">
+          <h3>新人榜 · 本周</h3>
+          <p class="bx-sub">首次参赛即进入前 5%</p>
+          <ol class="bx-rank-list">
+            <li><span class="num">1</span>校园餐车的一天<em>新星</em></li>
+            <li><span class="num">2</span>旧楼道里修钟表的女孩<em>新星</em></li>
+            <li><span class="num">3</span>地铁末班车的三名乘客<em>新星</em></li>
+            <li><span class="num">4</span>巷口修鞋摊的午后<em>新星</em></li>
+            <li><span class="num">5</span>凌晨四点的面包房<em>新星</em></li>
+          </ol>
+        </div>
+        <div class="bx-rank-card">
+          <h3>口碑榜 · 本期</h3>
+          <p class="bx-sub">完播率 + 收藏率加权</p>
+          <ol class="bx-rank-list">
+            <li><span class="num">1</span>爆料的边界在哪里<em>9.6 分</em></li>
+            <li><span class="num">2</span>深夜便利店灯光<em>9.4 分</em></li>
+            <li><span class="num">3</span>老式收音机修复记<em>9.2 分</em></li>
+            <li><span class="num">4</span>一锅汤熬过的三个冬天<em>9.0 分</em></li>
+            <li><span class="num">5</span>菜场闭市之后<em>8.9 分</em></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 专题企划 -->
+  <section class="bx-section alt" id="bx-topics">
+    <div class="bx-wrap">
+      <div class="bx-sec-head">
+        <h2 class="bx-h2">专题企划 · <span>长期命题</span></h2>
+        <p class="bx-sec-desc">每日大赛之外，我们围绕品牌故事与行业观察组织长期专题，每个专题至少更新 3 期，并由编辑团队持续跟进。</p>
+      </div>
+      <div class="bx-topics">
+        <article class="bx-topic">
+          <div class="bx-topic-head">
+            <div class="bx-topic-icon" style="background:rgba(255,59,92,.16);color:#ff3b5c">夜</div>
+            <h3>城市夜行计划</h3>
+            <span class="bx-status">更新至第 12 期</span>
+          </div>
+          <p>围绕夜间工作者的真实状态，记录城市在凌晨的样子，鼓励创作者以长期跟拍替代一次性的猎奇。</p>
+          <ul>
+            <li>第 12 期 · 便利店灯光下的七位夜行者</li>
+            <li>第 11 期 · 末班地铁里的沉默与哈欠</li>
+            <li>第 10 期 · 夜班护士交接的 14 分钟</li>
+          </ul>
+        </article>
+        <article class="bx-topic">
+          <div class="bx-topic-head">
+            <div class="bx-topic-icon" style="background:rgba(92,225,230,.14);color:#5ce1e6">核</div>
+            <h3>爆料核查公开课</h3>
+            <span class="bx-status">更新至第 8 期</span>
+          </div>
+          <p>由编辑部出镜，讲清一条热点内容从线索、取证到成片的完整路径，是本平台原创的行业知识专题。</p>
+          <ul>
+            <li>第 8 期 · 公共场合拍摄的边界清单</li>
+            <li>第 7 期 · 如何核对一张截图的原始出处</li>
+            <li>第 6 期 · 三段素材交叉验证实操</li>
+          </ul>
+        </article>
+        <article class="bx-topic">
+          <div class="bx-topic-head">
+            <div class="bx-topic-icon" style="background:rgba(255,209,102,.16);color:#ffd166">手</div>
+            <h3>街角手艺图鉴</h3>
+            <span class="bx-status">更新至第 15 期</span>
+          </div>
+          <p>修表、补鞋、修伞、配钥匙，把正在消失的街角手艺拍成可长期检索的档案。</p>
+          <ul>
+            <li>第 15 期 · 修表匠的三把镊子</li>
+            <li>第 14 期 · 修伞摊主的一百种伞骨</li>
+            <li>第 13 期 · 配钥匙机器的声音档案</li>
+          </ul>
+        </article>
+        <article class="bx-topic">
+          <div class="bx-topic-head">
+            <div class="bx-topic-icon" style="background:rgba(154,124,255,.16);color:#b3a1ff">新</div>
+            <h3>新人扶持赛道</h3>
+            <span class="bx-status">本季招募中</span>
+          </div>
+          <p>面向首次参赛的创作者，提供选题建议、拍摄清单与一次编辑一对一沟通，报名后可获得专属曝光位。</p>
+          <ul>
+            <li>赛道说明 · 新人作品如何进入推荐池</li>
+            <li>拍摄清单 · 手机也能完成的 6 个镜头</li>
+            <li>案例复盘 · 从 0 播放到新人榜第 3</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 创作者矩阵 -->
+  <section class="bx-section" id="bx-authors">
+    <div class="bx-wrap">
+      <div class="bx-sec-head">
+        <h2 class="bx-h2">创作者矩阵 · <span>社区中坚</span></h2>
+        <p class="bx-sec-desc">51爆料每日大赛的社区由长期驻站的创作者支撑。以下为近期表现稳定、内容质量持续在线的六位作者。</p>
+      </div>
+      <div class="bx-authors">
+        <article class="bx-author">
+          <div class="bx-avatar" style="background:linear-gradient(135deg,#ff3b5c,#7a1b3a)">夜</div>
+          <div>
+            <h3>夜航员阿野</h3>
+            <div class="bx-role">城市探索 · 深夜记录</div>
+            <p>连续两季跟拍夜间工作者，擅长在低照度环境里保留真实环境声。他的素材库里有超过 400 小时的夜间影像，坚持不使用摆拍补录。</p>
+            <div class="bx-numbers"><span>作品 <b>76</b></span><span>粉丝 <b>18.2 万</b></span></div>
+            <div class="bx-author-more"><button class="bx-mini" data-author="夜航员阿野" type="button">查看档案</button></div>
+          </div>
+        </article>
+        <article class="bx-author">
+          <div class="bx-avatar" style="background:linear-gradient(135deg,#5ce1e6,#146c75)">骑</div>
+          <div>
+            <h3>骑手老周</h3>
+            <div class="bx-role">行业观察 · 实用技巧</div>
+            <p>入行八年的外卖骑手，用第一视角讲清一单配送的全部环节。他习惯把后台数据打码后公开，让讨论回到具体问题上，被观众称为“最不煽情的爆料者”。</p>
+            <div class="bx-numbers"><span>作品 <b>43</b></span><span>粉丝 <b>11.6 万</b></span></div>
+            <div class="bx-author-more"><button class="bx-mini" data-author="骑手老周" type="button">查看档案</button></div>
+          </div>
+        </article>
+        <article class="bx-author">
+          <div class="bx-avatar" style="background:linear-gradient(135deg,#ffd166,#8a6110)">手</div>
+          <div>
+            <h3>手工老陈</h3>
+            <div class="bx-role">手作DIY · 教程干货</div>
+            <p>退休机械工程师，把修理旧物拍成有零件清单和成本表的教程。他坚持每个步骤都给近景特写，让观众真的可以照着做，而不是只看个热闹。</p>
+            <div class="bx-numbers"><span>作品 <b>128</b></span><span>粉丝 <b>25.7 万</b></span></div>
+            <div class="bx-author-more"><button class="bx-mini" data-author="手工老陈" type="button">查看档案</button></div>
+          </div>
+        </article>
+        <article class="bx-author">
+          <div class="bx-avatar" style="background:linear-gradient(135deg,#b3a1ff,#4b357f)">菜</div>
+          <div>
+            <h3>菜场观察员</h3>
+            <div class="bx-role">在地文化 · 日常记录</div>
+            <p>在市场里长大的创作者，能叫出一整条街摊主的名字。她的视频几乎没有配乐，只保留环境声与叫卖，被多家媒体引用为城市生活样本。</p>
+            <div class="bx-numbers"><span>作品 <b>59</b></span><span>粉丝 <b>9.4 万</b></span></div>
+            <div class="bx-author-more"><button class="bx-mini" data-author="菜场观察员" type="button">查看档案</button></div>
+          </div>
+        </article>
+        <article class="bx-author">
+          <div class="bx-avatar" style="background:linear-gradient(135deg,#7ee08a,#1f6b35)">小</div>
+          <div>
+            <h3>小楼探长</h3>
+            <div class="bx-role">人物访谈 · 情感故事</div>
+            <p>专注写字楼与老商圈的普通人访谈，善于用一句具体的提问打开话匣子。他的采访稿几乎不删原话，保留了停顿与口音，真实感是他最大的标签。</p>
+            <div class="bx-numbers"><span>作品 <b>67</b></span><span>粉丝 <b>14.1 万</b></span></div>
+            <div class="bx-author-more"><button class="bx-mini" data-author="小楼探长" type="button">查看档案</button></div>
+          </div>
+        </article>
+        <article class="bx-author">
+          <div class="bx-avatar" style="background:linear-gradient(135deg,#ff8a5c,#8a3310)">编</div>
+          <div>
+            <h3>51爆料编辑部</h3>
+            <div class="bx-role">官方发布 · 知识科普</div>
+            <p>官方账号，负责大赛规则发布、核查公开课与每周复盘。所有内容均标注编辑与审核人员，接受社区公开质询，是平台公信力的一部分。</p>
+            <div class="bx-numbers"><span>作品 <b>212</b></span><span>粉丝 <b>36.8 万</b></span></div>
+            <div class="bx-author-more"><button class="bx-mini" data-author="51爆料编辑部" type="button">查看档案</button></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 品牌故事 / 深度解析（关键词解析 800 字以上） -->
+  <section class="bx-section alt" id="bx-essay">
+    <div class="bx-wrap">
+      <div class="bx-sec-head">
+        <h2 class="bx-h2">品牌解析 · <span>51爆料每日大赛</span>为什么能持续运营</h2>
+        <p class="bx-sec-desc">这一节由编辑部撰写，说明平台的定位、机制与内容生态，也是对外解释“我们到底在做什么”的官方文本。</p>
+      </div>
+      <div class="bx-essay">
+        <h3>一、把“爆料”做成有规则的公共赛事</h3>
+        <p>很多人第一次听到“51爆料每日大赛”，会把它理解成一个追逐热点的短视频集合。但从第一天起，我们就没有把它当作流量池，而是当作一套可以长期运行的规则系统。每天一个命题、每天一次开榜、每天一次公示，参赛者需要在同一个命题下提交自己的观察，观众则在看过之后投票与评论。这种机制让“爆料”从偶发的、情绪化的传播，变成可比较、可复盘的内容生产。官方网站上每一期赛事都保留完整的命题说明、投稿数量、评审名单与结果公示，任何人可以回看第 1 期到第 318 期的全部记录。</p>
+        <p>在具体执行上，我们做了三件事：第一，命题尽量具体到可拍摄的尺度，例如“城市夜行”而不是“城市之美”，避免创作者用空镜和配乐填充；第二，要求提交素材来源与拍摄时间，凡是无法说明出处的内容一律不进入焦点推荐；第三，把编辑核查过程本身也做成内容，让观众看到一条爆料是如何被确认的。这三件事听起来朴素，但正是它们让 51爆料每日大赛 在大量同质内容中保持了辨识度。</p>
+
+        <h3>二、创作者、企业与观众的三方关系</h3>
+        <p>作为一家持续运营的视频品牌，我们非常清楚平台不是主角，创作者才是。51爆料每日大赛 的社区目前有 2.4 万名在册创作者，其中约 3,000 人保持每周更新，核心作者 60 余人承担了专题企划的主要产出。平台为他们提供选题建议、拍摄清单、素材核查支持与稳定的分发位；作为回报，创作者需遵守原创与正版的基本约定，不使用未经授权的影视片段与音乐。这套关系并不复杂，但它需要长期投入，而不是一次性补贴。</p>
+        <p>企业侧同样重要。我们与消费品牌、本地商户、公益机构的合作，始终围绕“内容共创”而非简单贴片广告。例如“街角手艺图鉴”专题中，合作方提供的是门店线索与老师傅的联系方式，而不是要求改脚本。这些合作在页面上明确标注，观众知道自己在看什么，品牌也获得了真正有说服力的曝光。我们相信，一个值得信赖的内容生态，必须让三方都能在明面上获得价值。</p>
+
+        <h3>三、内容生态与品质控制的具体做法</h3>
+        <p>在品质控制上，51爆料每日大赛 采用“机器初筛 + 编辑复核 + 社区反馈”三层结构。机器层负责识别重复上传、明显搬运与版权风险；编辑层负责核查事实、判断选题价值并给出修改建议；社区层则通过举报、评论与评分持续监督。我们不会因为一条内容数据好就放弃核查，也不会因为题材冷门就降低推荐权重——口碑榜的算法里，完播率与收藏率的权重高于点赞，正是为了鼓励真正被看完、被保存的内容。</p>
+        <p>我们也承认局限。每日更新意味着容错空间有限，个别期次的选题会偏窄，个别焦点内容在发布后仍会收到补充信息。因此官方网站保留了“内容修订记录”，每一条被修改过的描述都会标注时间与原因。这种透明度不是姿态，而是运营成本：它要求编辑团队每天多做一步核对，也要求我们接受公开质询。但正是这些看起来笨拙的步骤，构成了平台所谓“行业领先”的真实含义。</p>
+
+        <h3>四、下一个阶段：从每日赛事到长期档案</h3>
+        <p>面向下一阶段，51爆料每日大赛 会把重心放在“档案化”上。每日大赛解决的是新鲜度，专题企划解决的是深度，而档案化解决的是留存——我们希望三年后仍有人能检索到某条街的某家店、某位手艺人的某段讲述。为此，平台将逐步开放按地域、题材、作者检索的索引页，并为优质专题建立长期维护机制。同时，新人扶持赛道会持续扩容，让更多第一次拍摄的人获得被看见的机会。</p>
+        <p>回到最初的问题：51爆料每日大赛 为什么能持续运营？答案不在某一个爆款，而在于我们把爆料变成了有出处、有回应、有成长的日常。官方网站会继续每日更新，继续公示，继续接受质疑。这是我们理解的匠心，也是我们愿意长期承担的社会责任。</p>
+        <div class="bx-quote">“让每一次爆料都有出处”——这是 51爆料每日大赛 的编辑准则，也是我们对外公开的承诺。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 用户评价 -->
+  <section class="bx-section" id="bx-comments">
+    <div class="bx-wrap">
+      <div class="bx-sec-head">
+        <h2 class="bx-h2">社区口碑 · <span>观众怎么说</span></h2>
+        <p class="bx-sec-desc">以下评论来自每日大赛的公开评论区与赛后问卷，保留原话与大致时间，未做统一润色。</p>
+      </div>
+      <div class="bx-comments">
+        <div class="bx-comment">
+          <div class="bx-comment-head"><div class="bx-cavatar" style="background:#ff3b5c">林</div><b>林间有风</b><span>11 月 21 日</span></div>
+          <p>连续看了三期“城市夜行”，最喜欢便利店那一条。没有煽情配乐，也没有强行升华，就是把几个人拍清楚。这种克制现在很少见了。</p>
+          <div class="bx-score"><span class="bx-stars">★★★★★</span> 5.0</div>
+        </div>
+        <div class="bx-comment">
+          <div class="bx-comment-head"><div class="bx-cavatar" style="background:#5ce1e6">阿</div><b>阿哲不加班</b><span>11 月 20 日</span></div>
+          <p>作为同行说一句，外卖那期的后台截图打码做得很规范，比很多所谓深度报道靠谱。希望核查公开课能多更新几期。</p>
+          <div class="bx-score"><span class="bx-stars">★★★★☆</span> 4.5</div>
+        </div>
+        <div class="bx-comment">
+          <div class="bx-comment-head"><div class="bx-cavatar" style="background:#ffd166">旧</div><b>旧书摊主</b><span>11 月 19 日</span></div>
+          <p>我是被“街角手艺图鉴”吸引来的，没想到顺手把修表那期转给了我爸。他看得很认真，还跟我说了当年学手艺的事。这种内容应该多一点。</p>
+          <div class="bx-score"><span class="bx-stars">★★★★★</span> 5.0</div>
+        </div>
+        <div class="bx-comment">
+          <div class="bx-comment-head"><div class="bx-cavatar" style="background:#b3a1ff">米</div><b>米粒儿</b><span>11 月 18 日</span></div>
+          <p>新人赛道真的有用。我第一次投稿只有几百播放，编辑给我发了修改建议，第二次就进了新人榜。虽然名次不高，但那种被认真对待的感觉挺好的。</p>
+          <div class="bx-score"><span class="bx-stars">★★★★★</span> 5.0</div>
+        </div>
+        <div class="bx-comment">
+          <div class="bx-comment-head"><div class="bx-cavatar" style="background:#7ee08a">周</div><b>周末补觉</b><span>11 月 17 日</span></div>
+          <p>提个小意见：有些期次的命题太宽，导致投稿水平差距很大。建议像“夜行”这种具体的题目多来一些，观看体验会稳定很多。</p>
+          <div class="bx-score"><span class="bx-stars">★★★★☆</span> 4.0</div>
+        </div>
+        <div class="bx-comment">
+          <div class="bx-comment-head"><div class="bx-cavatar" style="background:#ff8a5c">老</div><b>老派观众</b><span>11 月 16 日</span></div>
+          <p>喜欢这里不追着热点跑。菜市场闭市那期我看了两遍，第二遍专门听环境声。希望能有一个按城市筛选的入口，方便找自己熟悉的地方。</p>
+          <div class="bx-score"><span class="bx-stars">★★★★☆</span> 4.5</div>
+        </div>
+        <div class="bx-comment">
+          <div class="bx-comment-head"><div class="bx-cavatar" style="background:#4b357f">夜</div><b>夜班第七年</b><span>11 月 15 日</span></div>
+          <p>我本人就是夜班护士，第 10 期那 14 分钟我几乎是屏住呼吸看完的。细节都对，交接班的时间点也没错。谢谢拍摄的人没有把我们拍成苦情戏。</p>
+          <div class="bx-score"><span class="bx-stars">★★★★★</span> 5.0</div>
+        </div>
+        <div class="bx-comment">
+          <div class="bx-comment-head"><div class="bx-cavatar" style="background:#146c75">剪</div><b>剪辑新手小K</b><span>11 月 14 日</span></div>
+          <p>教程区是真的能学到东西，零件清单和成本表都给了，我照着修好了家里的旧收音机。就是希望字幕字号能再大一点，手机上看有点吃力。</p>
+          <div class="bx-score"><span class="bx-stars">★★★★☆</span> 4.5</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S7 辅助区：企业动态 + 合作品牌 -->
+  <section class="bx-section alt" id="bx-aux">
+    <div class="bx-wrap">
+      <div class="bx-sec-head">
+        <h2 class="bx-h2">企业动态与 <span>合作生态</span></h2>
+        <p class="bx-sec-desc">官方发布、版本更新与合作伙伴信息，均在此处集中公示，便于创作者与品牌方查阅。</p>
+      </div>
+      <div class="bx-aux-grid">
+        <div>
+          <h3 style="font-size:17px;margin:0 0 14px">最新企业动态</h3>
+          <div class="bx-news-list">
+            <div class="bx-news">
+              <time>11-22</time>
+              <div>
+                <h3>第 318 期开赛，新增“城市夜行”赛道</h3>
+                <p>投稿通道已开启，本期新增双人联合投稿形式，评审名单同步公示。</p>
+              </div>
+            </div>
+            <div class="bx-news">
+              <time>11-18</time>
+              <div>
+                <h3>核查公开课第 8 期上线</h3>
+                <p>本期主题为公共场合拍摄边界，附可下载的拍摄告知模板。</p>
+              </div>
+            </div>
+            <div class="bx-news">
+              <time>11-12</time>
+              <div>
+                <h3>新人扶持赛道完成第一季复盘</h3>
+                <p>共 412 位创作者参与，17 人进入新人榜，复盘报告已在官方网站公开。</p>
+              </div>
+            </div>
+            <div class="bx-news">
+              <time>11-05</time>
+              <div>
+                <h3>版权合作库扩充至 1,200 首</h3>
+                <p>新增正版配乐与音效资源，站内创作者可直接下载使用。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:17px;margin:0 0 14px">合作品牌与伙伴</h3>
+          <div class="bx-partners">
+            <div class="bx-partner"><span class="bx-partner-mark" style="background:#ffd166">光</span><div><b>光屿影像器材</b><small>拍摄设备支持</small></div></div>
+            <div class="bx-partner"><span class="bx-partner-mark" style="background:#5ce1e6">城</span><div><b>城市漫步协会</b><small>专题联合企划</small></div></div>
+            <div class="bx-partner"><span class="bx-partner-mark" style="background:#b3a1ff">拾</span><div><b>拾光书店</b><small>线下放映场地</small></div></div>
+            <div class="bx-partner"><span class="bx-partner-mark" style="background:#7ee08a">巷</span><div><b>巷口咖啡</b><small>创作者补给站</small></div></div>
+            <div class="bx-partner"><span class="bx-partner-mark" style="background:#ff8a5c">匠</span><div><b>匠人工坊</b><small>手艺专题顾问</small></div></div>
+            <div class="bx-partner"><span class="bx-partner-mark" style="background:#9a7cff">声</span><div><b>声场录音棚</b><small>音频后期支持</small></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S7 FAQ -->
+  <section class="bx-section" id="bx-faq">
+    <div class="bx-wrap">
+      <div class="bx-sec-head">
+        <h2 class="bx-h2">帮助中心 · <span>常见问题</span></h2>
+        <p class="bx-sec-desc">关于投稿、评审与版权的常见疑问，如果这里没有答案，可以通过投稿弹窗中的联系方式找到我们。</p>
+      </div>
+      <div class="bx-faq">
+        <details>
+          <summary>如何参加 51爆料每日大赛？</summary>
+          <p>点击页面右上方“我要投稿”，填写作品标题、素材来源说明与联系方式即可提交。每期命题在公告条与焦点区公示，投稿截止时间为当期公告标注的日期。</p>
+        </details>
+        <details>
+          <summary>投稿需要什么画质和格式？</summary>
+          <p>建议 1080P 以上，横竖屏均可，单条时长 1 至 15 分钟。请保留原始素材，进入焦点推荐的稿件会要求提供未剪辑版本用于核查。</p>
+        </details>
+        <details>
+          <summary>作品会被修改或二次剪辑吗？</summary>
+          <p>不会。平台只在获得作者书面同意后进行封面与标题的排版适配，正文内容保持作者版本。所有修订都会记录在内容的修订记录中。</p>
+        </details>
+        <details>
+          <summary>发现内容有误或侵犯权益怎么办？</summary>
+          <p>可在对应内容下使用反馈入口提交说明，或通过帮助中心的联系邮箱提交材料。核查团队会在 48 小时内回应，确有问题的内容将下线并公示处理结果。</p>
+        </details>
+        <details>
+          <summary>每日大赛的评审标准是什么？</summary>
+          <p>由三部分组成：素材真实性（40%）、表达完整度（35%）、社区反馈（25%）。真实性不达标的内容不进入任何榜单，即使数据表现很好。</p>
+        </details>
+        <details>
+          <summary>可以和企业品牌联合投稿吗？</summary>
+          <p>可以。联合投稿需在提交时标注合作方与利益关系，平台会在内容页明确展示。未标注的商业合作内容一经发现将取消参赛资格。</p>
+        </details>
+        <details>
+          <summary>新人扶持赛道需要单独报名吗？</summary>
+          <p>不需要。首次投稿的作品会自动进入新人池，编辑会根据选题与完成度给予建议。进入新人榜的作品将获得额外曝光位与一次编辑沟通机会。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bx-footer" id="bx-footer">
+  <div class="bx-wrap">
+    <div class="bx-footer-grid">
+      <div>
+        <h4>51爆料每日大赛</h4>
+        <p>51爆料每日大赛官方网站，专注原创爆料影像与每日赛事运营，致力于为创作者、企业与观众搭建值得信赖的视频内容生态。</p>
+        <p style="margin-top:10px">合作与投稿：press@51dailyarena.example</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#bx-focus">今日焦点</a></li>
+          <li><a href="#bx-rank">每日榜单</a></li>
+          <li><a href="#bx-topics">专题企划</a></li>
+          <li><a href="#bx-authors">创作者矩阵</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>官方信息</h4>
+        <ul>
+          <li><a href="#bx-essay">品牌故事</a></li>
+          <li><a href="#bx-aux">企业动态</a></li>
+          <li><a href="#bx-faq">帮助中心</a></li>
+          <li><a href="#bx-comments">社区口碑</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>参与方式</h4>
+        <ul>
+          <li><a href="#bx-focus">参加今日大赛</a></li>
+          <li><a href="#bx-topics">新人扶持赛道</a></li>
+          <li><button class="bx-mini" id="bxFooterSubmit" type="button">在线投稿</button></li>
+          <li><button class="bx-mini" id="bxFooterFeedback" type="button">意见反馈</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bx-footer-bottom">
+      <span>© 2026 51爆料每日大赛 官方网站 · 版权所有 · 持续运营中</span>
+      <span>备案号：示例备案 00000000 号 · 正版内容 · 用户至上</span>
+    </div>
+  </div>
+</footer>
+
+<!-- 投稿弹窗 -->
+<div class="bx-modal" id="bxSubmitModal" role="dialog" aria-modal="true" aria-labelledby="bxSubmitTitle">
+  <div class="bx-modal-box">
+    <h3 id="bxSubmitTitle">投稿 / 参加今日大赛</h3>
+    <p>填写基本信息后，编辑会在两个工作日内回复。请确保素材来源可核查。</p>
+    <label for="bxSName">作者昵称</label>
+    <input id="bxSName" type="text" placeholder="例如：夜航员阿野">
+    <label for="bxSTitle">作品标题</label>
+    <input id="bxSTitle" type="text" placeholder="例如：深夜便利店灯光">
+    <label for="bxSTrack">参赛赛道</label>
+    <select id="bxSTrack">
+      <option>城市夜行赛道</option>
+      <option>街角手艺赛道</option>
+      <option>新人扶持赛道</option>
+      <option>自由命题赛道</option>
+    </select>
+    <label for="bxSDesc">素材来源说明</label>
+    <textarea id="bxSDesc" placeholder="拍摄时间、地点、素材来源与联系方式"></textarea>
+    <div class="bx-modal-actions">
+      <button class="bx-btn bx-btn-ghost" data-close type="button">取消</button>
+      <button class="bx-btn bx-btn-hi" id="bxSubmitSend" type="button">提交</button>
+    </div>
+  </div>
+</div>
+
+<!-- 作者弹窗 -->
+<div class="bx-modal" id="bxAuthorModal" role="dialog" aria-modal="true" aria-labelledby="bxAuthorTitle">
+  <div class="bx-modal-box">
+    <h3 id="bxAuthorTitle">创作者档案</h3>
+    <p id="bxAuthorBody">正在加载创作者信息。</p>
+    <div class="bx-modal-actions">
+      <button class="bx-btn bx-btn-hi" data-close type="button">关闭</button>
+    </div>
+  </div>
+</div>
+
+<!-- 分享弹窗 -->
+<div class="bx-modal" id="bxShareModal" role="dialog" aria-modal="true" aria-labelledby="bxShareTitle">
+  <div class="bx-modal-box">
+    <h3 id="bxShareTitle">分享这条内容</h3>
+    <p>选择分享方式，或直接复制内容链接发送给朋友。</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="bx-btn bx-btn-ghost" data-shareto="微信" type="button">微信</button>
+      <button class="bx-btn bx-btn-ghost" data-shareto="微博" type="button">微博</button>
+      <button class="bx-btn bx-btn-ghost" data-shareto="QQ" type="button">QQ</button>
+      <button class="bx-btn bx-btn-ghost" data-shareto="复制链接" type="button">复制链接</button>
+    </div>
+    <div class="bx-modal-actions">
+      <button class="bx-btn bx-btn-hi" data-close type="button">完成</button>
+    </div>
+  </div>
+</div>
+
+<!-- 反馈弹窗 -->
+<div class="bx-modal" id="bxFeedbackModal" role="dialog" aria-modal="true" aria-labelledby="bxFeedbackTitle">
+  <div class="bx-modal-box">
+    <h3 id="bxFeedbackTitle">意见反馈</h3>
+    <p>你的反馈会进入编辑部的每日复核清单，我们会认真处理每一条。</p>
+    <label for="bxFType">反馈类型</label>
+    <select id="bxFType">
+      <option>内容有误</option>
+      <option>版权问题</option>
+      <option>功能建议</option>
+      <option>其他</option>
+    </select>
+    <label for="bxFText">具体说明</label>
+    <textarea id="bxFText" placeholder="请尽量写明期次与内容标题"></textarea>
+    <div class="bx-modal-actions">
+      <button class="bx-btn bx-btn-ghost" data-close type="button">取消</button>
+      <button class="bx-btn bx-btn-hi" id="bxFeedbackSend" type="button">发送</button>
+    </div>
+  </div>
+</div>
+
+<div class="bx-toast" id="bxToast" role="status" aria-live="polite"></div>
+<button class="bx-totop" id="bxToTop" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var toastEl = document.getElementById('bxToast');
+  var toastTimer = null;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 2200);
+  }
+
+  /* 移动端导航 */
+  var burger = document.getElementById('bxBurger');
+  var mobileNav = document.getElementById('bxMobileNav');
+  burger.addEventListener('click', function(){
+    var open = mobileNav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobileNav.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){
+      mobileNav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    }
+  });
+
+  /* 搜索前端反馈 */
+  var dataItems = [
+    '深夜 11 点的便利店灯光','一张外卖小票背后的 12 小时','菜市场闭市之后','老式收音机修复记',
+    '写字楼里的最后一间打印店','爆料的边界在哪里','城市夜行计划','爆料核查公开课','街角手艺图鉴',
+    '新人扶持赛道','夜航员阿野','骑手老周','手工老陈','菜场观察员','小楼探长','51爆料编辑部'
+  ];
+  var searchForm = document.getElementById('bxSearchForm');
+  var searchInput = document.getElementById('bxSearchInput');
+  var searchMsg = document.getElementById('bxSearchMsg');
+  searchForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var q = searchInput.value.trim();
+    if(!q){
+      searchMsg.textContent = '请输入关键词后再搜索。';
+      searchMsg.classList.add('show');
+      return;
+    }
+    var hits = dataItems.filter(function(s){ return s.indexOf(q) !== -1; });
+    if(hits.length){
+      searchMsg.textContent = '找到 ' + hits.length + ' 条相关内容：' + hits.slice(0,3).join('、') + (hits.length>3 ? ' 等' : '') + '。';
+    }else{
+      searchMsg.textContent = '暂未找到“' + q + '”相关爆料，可尝试更短的关键词，或到帮助中心提交选题建议。';
+    }
+    searchMsg.classList.add('show');
+  });
+
+  /* 点赞 / 收藏 切换 */
+  document.addEventListener('click', function(e){
+    var likeBtn = e.target.closest('[data-like]');
+    if(likeBtn){
+      var on = likeBtn.classList.toggle('on');
+      var raw = likeBtn.textContent.replace(/[^\d\.w]/g,'');
+      if(on){
+        likeBtn.textContent = '♥ 已赞' + (raw ? ' ' + raw : '');
+        toast('已点赞，感谢你的支持');
+      }else{
+        likeBtn.textContent = '♡ 点赞' + (raw ? ' ' + raw : '');
+        toast('已取消点赞');
+      }
+      return;
+    }
+    var favBtn = e.target.closest('[data-fav]');
+    if(favBtn){
+      var fon = favBtn.classList.toggle('on');
+      favBtn.textContent = fon ? '★ 已收藏' : '☆ 收藏';
+      toast(fon ? '已收藏到你的内容夹' : '已取消收藏');
+      return;
+    }
+  });
+
+  /* 复制链接 */
+  document.addEventListener('click', function(e){
+    var copyBtn = e.target.closest('[data-copy]');
+    if(!copyBtn) return;
+    var link = '51爆料每日大赛 · 每日焦点内容';
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = link;
+      document.body.appendChild(ta);
+      ta.select();
+      try{ document.execCommand('copy'); }catch(err){}
+      document.body.removeChild(ta);
+      toast('内容信息已复制，可粘贴分享');
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(link).then(function(){
+        toast('内容信息已复制，可粘贴分享');
+      }).catch(fallback);
+    }else{
+      fallback();
+    }
+  });
+
+  /* 弹窗通用 */
+  var modals = {
+    submit: document.getElementById('bxSubmitModal'),
+    author: document.getElementById('bxAuthorModal'),
+    share: document.getElementById('bxShareModal'),
+    feedback: document.getElementById('bxFeedbackModal')
+  };
+  function openModal(key){
+    Object.keys(modals).forEach(function(k){ modals[k].classList.remove('open'); });
+    if(modals[key]) modals[key].classList.add('open');
+  }
+  function closeAll(){
+    Object.keys(modals).forEach(function(k){ modals[k].classList.remove('open'); });
+  }
+  document.addEventListener('click', function(e){
+    if(e.target.closest('[data-close]')) closeAll();
+    if(e.target.classList && e.target.classList.contains('bx-modal')) closeAll();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeAll();
+  });
+
+  ['bxSubmitOpen','bxHeroSubmit','bxFooterSubmit'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('click', function(){ openModal('submit'); });
+  });
+  document.getElementById('bxFooterFeedback').addEventListener('click', function(){ openModal('feedback'); });
+
+  document.getElementById('bxSubmitSend').addEventListener('click', function(){
+    var name = document.getElementById('bxSName').value.trim();
+    var title = document.getElementById('bxSTitle').value.trim();
+    if(!name || !title){
+      toast('请填写作者昵称与作品标题');
+      return;
+    }
+    closeAll();
+    toast('投稿已提交，编辑部将在两个工作日内回复');
+    document.getElementById('bxSName').value = '';
+    document.getElementById('bxSTitle').value = '';
+    document.getElementById('bxSDesc').value = '';
+  });
+
+  document.getElementById('bxFeedbackSend').addEventListener('click', function(){
+    var text = document.getElementById('bxFText').value.trim();
+    if(!text){
+      toast('请简单描述你的反馈内容');
+      return;
+    }
+    closeAll();
+    toast('反馈已收到，感谢你帮助平台改进');
+    document.getElementById('bxFText').value = '';
+  });
+
+  /* 分享 */
+  document.addEventListener('click', function(e){
+    var shareBtn = e.target.closest('[data-share]');
+    if(shareBtn){ openModal('share'); return; }
+    var shareTo = e.target.closest('[data-shareto]');
+    if(shareTo){
+      var to = shareTo.getAttribute('data-shareto');
+      if(to === '复制链接'){
+        var link = '51爆料每日大赛 · 每日焦点内容';
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(link).then(function(){ toast('链接已复制'); }).catch(function(){ toast('请手动复制页面链接'); });
+        }else{
+          toast('请手动复制页面链接');
+        }
+      }else{
+        toast('已生成' + to + '分享提示');
+      }
+      closeAll();
+    }
+  });
+
+  /* 作者档案 */
+  var authorInfo = {
+    '夜航员阿野':'城市探索方向创作者，连续两季参与“城市夜行”专题，累计提交 76 条作品，粉丝 18.2 万。坚持不摆拍、不补录，低照度实拍是其标志性风格。',
+    '骑手老周':'行业观察方向创作者，入行八年外卖骑手，作品 43 条，粉丝 11.6 万。擅长用后台数据与口述结合的方式还原真实配送链路。',
+    '手工老陈':'手作DIY方向创作者，退休机械工程师，作品 128 条，粉丝 25.7 万。教程均附零件清单与成本表，强调可复现。',
+    '菜场观察员':'在地文化方向创作者，作品 59 条，粉丝 9.4 万。长期记录市场与街巷，视频保留环境声与方言，是被引用最多的城市生活样本之一。',
+    '小楼探长':'人物访谈方向创作者，作品 67 条，粉丝 14.1 万。采访稿保留停顿与口音，擅长用具体提问打开受访者的话匣子。',
+    '51爆料编辑部':'平台官方账号，作品 212 条，粉丝 36.8 万。负责赛事规则发布、核查公开课与每周复盘，所有内容标注编辑与审核人员。'
+  };
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-author]');
+    if(!btn) return;
+    var name = btn.getAttribute('data-author');
+    document.getElementById('bxAuthorTitle').textContent = name + ' · 创作者档案';
+    document.getElementById('bxAuthorBody').textContent = authorInfo[name] || '这位创作者暂时还没有公开档案。';
+    openModal('author');
+  });
+
+  /* 回到顶部 */
+  var toTop = document.getElementById('bxToTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 520){ toTop.classList.add('show'); }else{ toTop.classList.remove('show'); }
+  }, {passive:true});
+  toTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+                                                                                                   </html>
